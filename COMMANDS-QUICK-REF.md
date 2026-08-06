@@ -1,6 +1,6 @@
 # Commands Quick Reference
 
-> 94 slash commands installed globally. Type `/` in any Claude Code session to invoke.
+> 56 slash commands installed globally. Type `/` in any Claude Code session to invoke.
 
 ---
 
@@ -26,7 +26,6 @@
 |---------|-------------|
 | `/test-coverage` | Analyze coverage, identify gaps, and generate missing tests toward the target threshold |
 | `/go-test` | TDD workflow for Go (table-driven, 80%+ coverage with `go test -cover`) |
-| `/kotlin-test` | TDD for Kotlin (Kotest + Kover) |
 | `/rust-test` | TDD for Rust (cargo test, `cargo-llvm-cov`) |
 | `/cpp-test` | TDD for C++ (GoogleTest + gcov/lcov) |
 | `/flutter-test` | Run Flutter/Dart tests (unit, widget, golden, integration), report and fix failures |
@@ -41,7 +40,6 @@
 | `/code-review` | Code review — local uncommitted changes or GitHub PR (pass PR number/URL for PR mode) |
 | `/python-review` | Python — PEP 8, type hints, security, idiomatic patterns |
 | `/go-review` | Go — idiomatic patterns, concurrency safety, error handling |
-| `/kotlin-review` | Kotlin — null safety, coroutine safety, clean architecture |
 | `/rust-review` | Rust — ownership, lifetimes, unsafe usage |
 | `/cpp-review` | C++ — memory safety, modern idioms, concurrency |
 | `/flutter-review` | Flutter/Dart — widget best practices, state management, accessibility, security |
@@ -57,7 +55,6 @@
 |---------|-------------|
 | `/build-fix` | Detect and fix build errors — delegates to the right build-resolver agent automatically |
 | `/go-build` | Fix Go build errors and `go vet` warnings |
-| `/kotlin-build` | Fix Kotlin/Gradle compiler errors |
 | `/rust-build` | Fix Rust build + borrow checker issues |
 | `/cpp-build` | Fix C++ CMake and linker problems |
 | `/gradle-build` | Fix Gradle errors for Android / KMP |
@@ -126,7 +123,6 @@
 | `/resume-session` | Load the most recent saved session from the canonical session store and resume from where you left off |
 | `/sessions` | Browse, search, and manage session history with aliases from `~/.claude/session-data/` (with legacy reads from `~/.claude/sessions/`) |
 | `/checkpoint` | Create, verify, or list workflow checkpoints after running verification checks |
-| `/aside` | Answer a quick side question without losing current task context |
 
 ---
 
@@ -174,7 +170,6 @@ These lifecycle commands are also available through the `ecc` CLI.
 | `/learn-eval` | Extract patterns + self-evaluate quality before saving |
 | `/evolve` | Analyse learned instincts, suggest evolved skill structures |
 | `/promote` | Promote project-scoped instincts to global scope |
-| `/prune` | Delete pending instincts older than 30 days that were never promoted |
 | `/instinct-status` | Show all learned instincts (project + global) with confidence scores |
 | `/instinct-export` | Export instincts to a file |
 | `/instinct-import` | Import instincts from a file or URL |
@@ -220,9 +215,7 @@ These lifecycle commands are also available through the `ecc` CLI.
 | `/project-init` | Detect a project's stack and produce a dry-run ECC onboarding plan |
 | `/harness-audit` | Audit the agent harness configuration for reliability and cost |
 | `/model-route` | Route a task to the right model (Haiku / Sonnet / Opus) |
-| `/pm2` | PM2 process manager initialisation |
 | `/setup-pm` | Configure package manager (npm / pnpm / yarn / bun) |
-| `/auto-update` | Pull the latest ECC repo changes and reinstall the current managed targets |
 | `/cost-report` | Generate a local Claude Code cost report from a cost-tracker SQLite database |
 | `/security-scan` | Run AgentShield against agent, hook, MCP, permission, and secret surfaces |
 | `/jira` | Retrieve a Jira ticket, analyze requirements, update status, or add comments |

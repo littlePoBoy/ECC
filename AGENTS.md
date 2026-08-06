@@ -1,6 +1,6 @@
 # Everything Claude Code (ECC) — Agent Instructions
 
-This is a **production-ready AI coding plugin** providing 67 specialized agents, 281 skills, 94 commands, and automated hook workflows for software development.
+This is a **production-ready AI coding plugin** providing 31 specialized agents, 133 skills, 56 commands, and automated hook workflows for software development.
 
 **Version:** 2.1.0
 
@@ -26,7 +26,6 @@ This is a **production-ready AI coding plugin** providing 67 specialized agents,
 | e2e-runner | End-to-end Playwright testing | Critical user flows |
 | refactor-cleaner | Dead code cleanup | Code maintenance |
 | doc-updater | Documentation and codemaps | Updating docs |
-| cpp-reviewer | C/C++ code review | C and C++ projects |
 | cpp-build-resolver | C/C++ build errors | C and C++ build failures |
 | fsharp-reviewer | F# functional code review | F# projects |
 | docs-lookup | Documentation lookup via Context7 | API/docs questions |
@@ -44,7 +43,6 @@ This is a **production-ready AI coding plugin** providing 67 specialized agents,
 | harness-optimizer | Harness config tuning | Reliability, cost, throughput |
 | rust-reviewer | Rust code review | Rust projects |
 | rust-build-resolver | Rust build errors | Rust build failures |
-| pytorch-build-resolver | PyTorch runtime/CUDA/training errors | PyTorch build/training failures |
 | mle-reviewer | Production ML pipeline review | ML pipelines, evals, serving, monitoring, rollback |
 | typescript-reviewer | TypeScript/JavaScript code review | TypeScript/JavaScript projects |
 
@@ -151,9 +149,9 @@ Troubleshoot failures: check test isolation → verify mocks → fix implementat
 ## Project Structure
 
 ```
-agents/          — 67 specialized subagents
-skills/          — 281 workflow skills and domain knowledge
-commands/        — 94 slash commands
+agents/          — 31 specialized subagents
+skills/          — 133 workflow skills and domain knowledge
+commands/        — 56 slash commands
 hooks/           — Trigger-based automations
 rules/           — Always-follow guidelines (common + per-language)
 scripts/         — Cross-platform Node.js utilities
