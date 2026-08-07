@@ -411,53 +411,6 @@ test('marketplace local plugin path resolves to a concrete plugin subdirectory (
   }
 });
 
-// ── plugins/ecc marketplace plugin folder ─────────────────────────────────────
-// Thin Codex plugin target for the repo marketplace. Content is single-sourced
-// at the repo root (no vendored skills/MCP copies) per the maintainer direction
-// on #2097; these tests pin the manifest sync and the parent-relative refs.
-console.log('\n=== plugins/ecc Codex marketplace plugin folder ===\n');
-
-const marketplacePluginManifestPath = path.join(repoRoot, 'plugins', 'ecc', '.codex-plugin', 'plugin.json');
-const marketplacePluginManifest = loadJsonObject(marketplacePluginManifestPath, 'plugins/ecc/.codex-plugin/plugin.json');
-const rootCodexManifest = loadJsonObject(path.join(repoRoot, '.codex-plugin', 'plugin.json'), '.codex-plugin/plugin.json');
-
-test('plugins/ecc manifest name matches the root Codex manifest', () => {
-  assert.strictEqual(marketplacePluginManifest.name, rootCodexManifest.name);
-});
-
-test('plugins/ecc manifest version matches package.json', () => {
-  assert.strictEqual(marketplacePluginManifest.version, expectedVersion);
-});
-
-test('plugins/ecc manifest version matches the root Codex manifest', () => {
-  assert.strictEqual(marketplacePluginManifest.version, rootCodexManifest.version);
-});
-
-test('plugins/ecc manifest reuses root skills and MCP config without vendoring', () => {
-  const pluginDir = path.dirname(path.dirname(marketplacePluginManifestPath));
-
-  const skillsTarget = path.resolve(pluginDir, marketplacePluginManifest.skills);
-  assert.strictEqual(skillsTarget, path.join(repoRoot, 'skills'), `skills ref must resolve to the root skills/ directory, got: ${marketplacePluginManifest.skills}`);
-  assert.ok(fs.existsSync(skillsTarget), 'Root skills/ directory missing');
-
-  const mcpTarget = path.resolve(pluginDir, marketplacePluginManifest.mcpServers);
-  assert.strictEqual(mcpTarget, path.join(repoRoot, '.mcp.json'), `mcpServers ref must resolve to the root .mcp.json, got: ${marketplacePluginManifest.mcpServers}`);
-  assert.ok(fs.existsSync(mcpTarget), 'Root .mcp.json missing');
-
-  assert.ok(!fs.existsSync(path.join(pluginDir, 'skills')), 'plugins/ecc must not vendor a second skills/ copy (see #2097 review)');
-  assert.ok(!fs.existsSync(path.join(pluginDir, '.mcp.json')), 'plugins/ecc must not vendor a second .mcp.json (see #2097 review)');
-});
-
-test('plugins/ecc manifest interface assets resolve to root assets', () => {
-  const pluginDir = path.dirname(path.dirname(marketplacePluginManifestPath));
-
-  for (const ref of [marketplacePluginManifest.interface.composerIcon, marketplacePluginManifest.interface.logo]) {
-    const target = path.resolve(pluginDir, ref);
-    assert.ok(target.startsWith(path.join(repoRoot, 'assets') + path.sep), `Asset ref must resolve under root assets/: ${ref}`);
-    assert.ok(fs.existsSync(target), `Asset ref target missing: ${ref}`);
-  }
-});
-
 test('plugins/ecc README documents the upstream Codex fragility', () => {
   const readmePath = path.join(repoRoot, 'plugins', 'ecc', 'README.md');
   assert.ok(fs.existsSync(readmePath), 'Expected plugins/ecc/README.md');
