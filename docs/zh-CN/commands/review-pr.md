@@ -18,7 +18,6 @@ description: 使用专门代理进行全面的PR审查
    * 寻找 `CLAUDE.md`、lint 配置、TypeScript 配置、仓库约定
 3. 运行专项审查代理：
    * `code-reviewer`
-   * `comment-analyzer`
    * `pr-test-analyzer`
    * `silent-failure-hunter`
    * `type-design-analyzer`
